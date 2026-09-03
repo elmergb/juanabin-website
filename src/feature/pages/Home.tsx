@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, TrendingUp, Users, Recycle, Leaf, Package } from 'lucide-react';
-
+import juanaBinAiModel from '../../assets/fonts/JuanaBin Asset/Juana Bin Ai Model.avif';
+import juanaBinPHModel from '../../assets/fonts/JuanaBin Asset/JuanaBinPH Model.avif';
+import vase from '../../assets/fonts/JuanaBin Asset/vase.avif';
+import weaving from '../../assets/fonts/JuanaBin Asset/weaving.avif';
+import womanMakingChair from '../../assets/fonts/JuanaBin Asset/Woman Making a chair.avif';
 export function Home({ onAddToCart, onQuickView }) {
   const [contactForm, setContactForm] = useState({
     firstName: '',
@@ -41,6 +45,7 @@ export function Home({ onAddToCart, onQuickView }) {
   const artisanMaterials = [
     {
       title: 'Reclaimed Wood',
+<<<<<<< HEAD
       description: '100% recycled timber from local waste streams.',
       image: 'https://images.unsplash.com/photo-1633505066033-338d520e7cb3?w=500&h=500&fit=crop',
       icon: Recycle
@@ -55,6 +60,22 @@ export function Home({ onAddToCart, onQuickView }) {
       title: 'Recycled Glass',
       description: 'Creating unique ceramic pieces from discarded glass',
       image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop',
+=======
+      description: 'Sourced from construction waste and fallen timber',
+      image: womanMakingChair,
+      icon: Recycle
+    },
+    {
+        title: 'Plastic Textiles',
+        description: 'Woven from reclaimed plastic fibers and waste materials',
+        image: weaving,
+        icon: Package
+      },
+    {
+      title: 'Recycled Glass',
+      description: 'Transformed into beautiful art and functional pieces',
+      image: vase,
+>>>>>>> assets
       icon: Leaf
     }
   ];
