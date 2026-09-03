@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingCart, Bell } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import NotificationModal from '../ui/NotificationModal';
 
 export function Navbar({ cartCount = 0 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,9 +76,18 @@ export function Navbar({ cartCount = 0 }) {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3 md:gap-4">
-            <button className="hidden p-2 transition-colors rounded-lg hover:bg-warm-200 md:block">
-              <Bell size={20} className="text-warm-700" />
-            </button>
+          <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="p-2 rounded-full hover:bg-warm-100"
+              >
+                <Bell size={20} className="text-warm-700" />
+              </button>
+
+              <NotificationModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
             <Link
               to="/cart"
               className="relative p-2 transition-colors rounded-lg hover:bg-warm-200"
@@ -127,10 +138,6 @@ export function Navbar({ cartCount = 0 }) {
                     {link.label}
                   </Link>
                 ))}
-                <button className="flex items-center w-full gap-2 px-4 py-2 text-sm font-medium text-left rounded-lg text-warm-700 hover:bg-warm-100">
-                  <Bell size={18} />
-                  Notifications
-                </button>
               </div>
             </motion.div>
           )}
