@@ -2,18 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'FjallaOne';
-  src: url('./assets/fonts/FjallaOne-Regular.ttf');
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply font-sans bg-warm-50 text-warm-900;
+    @apply bg-warm-50 text-warm-900 font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -21,11 +16,11 @@
   }
 
   h1 {
-    @apply text-5xl leading-tight md:text-6xl;
+    @apply text-5xl md:text-6xl leading-tight;
   }
 
   h2 {
-    @apply text-4xl leading-tight md:text-5xl;
+    @apply text-4xl md:text-5xl leading-tight;
   }
 
   h3 {
@@ -43,11 +38,11 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-medium transition-all rounded-lg whitespace-nowrap;
+    @apply px-6 py-3 rounded-lg font-medium transition-all inline-flex items-center justify-center gap-2 whitespace-nowrap;
   }
 
   .btn-primary {
-    @apply text-white shadow-md bg-eco-600 hover:bg-eco-700 hover:shadow-lg;
+    @apply bg-eco-600 text-white hover:bg-eco-700 shadow-md hover:shadow-lg;
   }
 
   .btn-secondary {
@@ -59,7 +54,7 @@
   }
 
   .container-max {
-    @apply px-4 mx-auto max-w-7xl sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .section {
@@ -67,11 +62,11 @@
   }
 
   .card {
-    @apply transition-shadow bg-white rounded-lg shadow-sm hover:shadow-md;
+    @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow;
   }
 
   .input {
-    @apply w-full px-4 py-2 border rounded-lg border-warm-200 focus:outline-none focus:ring-2 focus:ring-eco-500 focus:border-transparent;
+    @apply w-full px-4 py-2 border border-warm-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-500 focus:border-transparent;
   }
 
   .badge {
@@ -89,5 +84,5 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded bg-warm-300 hover:bg-warm-400;
+  @apply bg-warm-300 rounded hover:bg-warm-400;
 }

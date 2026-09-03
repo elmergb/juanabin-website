@@ -70,29 +70,29 @@ export function Home({ onAddToCart, onQuickView }) {
     <div className="min-h-screen">
       {/* Hero Section */}
       <motion.section
-        className="pt-32 pb-20 overflow-hidden bg-gradient-to-b from-emerald-700/50 to-emerald-500/10 md:pt-40 md:pb-32 "
+        className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-eco-50 via-warm-50 to-warm-50 overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <div className="container-max">
-          <div className="flex items-center justify-center md:grid-cols-2">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Text */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <h1 className="font-[FjallaOne] tracking-wide mb-6 text-5xl font-bold md:text-6xl text-warm-900">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-warm-900 leading-tight">
                 Smart Waste, Artisanal Future
               </h1>
-              <p className="mb-8 text-lg leading-relaxed text-black max-w-150 md:text-xl">
+              <p className="text-lg md:text-xl text-warm-600 mb-8 leading-relaxed max-w-lg">
                 We empower marginalized Filipino artisans through AI-driven waste management and circular economy initiatives.
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/shop"
-                  className="border btn border-emerald-500 bg-gradient-to-b from-emerald-500 to-cyan-300/40 hover:scale-[1.05]"
+                  className="btn btn-primary"
                 >
                   Explore Products
                   <ArrowRight size={20} />
@@ -102,16 +102,16 @@ export function Home({ onAddToCart, onQuickView }) {
                     const el = document.getElementById('mission');
                     el?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="text-white transition duration-300 btn border-emerald-600 bg-emerald-600 hover:bg-gradient-to-t hover:from-green-600 hover:to-[#39FF14] hover:text-emerald-950"
+                  className="btn btn-outline"
                 >
                   Get Involved
                 </button>
               </div>
             </motion.div>
 
-            {/* Visual Journey
+            {/* Visual Journey */}
             <motion.div
-              className="flex-col hidden gap-3 md:flex"
+              className="hidden md:flex flex-col gap-3"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
@@ -126,46 +126,46 @@ export function Home({ onAddToCart, onQuickView }) {
                   )}
                 </div>
               ))}
-            </motion.div> */}
+            </motion.div>
           </div>
         </div>
       </motion.section>
 
       {/* Intelligent Segregation */}
       <motion.section
-        className="m-5 bg-white"
+        className="section bg-white"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="p-10 border border-green-800 pt-15 rounded-xl container-max">
+        <div className="container-max">
           <motion.div
-            className="mb-16 text-center"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="mb-4 text-4xl font-bold md:text-5xl text-warm-900 font-[FjallaOne]">Intelligent Segregation</h2>
-            <p className="max-w-2xl mx-auto mb-0 text-lg text-warm-600">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-warm-900">Intelligent Segregation</h2>
+            <p className="text-lg text-warm-600 max-w-2xl mx-auto">
               Our AI-powered platform makes waste sorting accurate, engaging, and measurable
             </p>
           </motion.div>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, idx) => (
               <motion.div
                 key={idx}
-                className="p-8 card bg-gradient-to-br from-emerald-600 to-emerald-400/80"
+                className="card p-8"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.2, duration: 0.2 }}
+                transition={{ delay: idx * 0.2, duration: 0.8 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="flex items-center justify-center w-12 h-12 mb-4 rounded-lg">
-                  <feature.icon className="text-white" size={24} />
+                <div className="w-12 h-12 bg-eco-100 rounded-lg flex items-center justify-center mb-4">
+                  <feature.icon className="text-eco-600" size={24} />
                 </div>
-                <h3 className="mb-2 text-xl font-semibold text-warm-900">{feature.title}</h3>
-                <p className="text-neutral-50">{feature.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-warm-900">{feature.title}</h3>
+                <p className="text-warm-600">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -175,7 +175,7 @@ export function Home({ onAddToCart, onQuickView }) {
       {/* Mission Section */}
       <motion.section
         id="mission"
-        className="section bg-gradient-to-b from-eco-700/80 to-black/90"
+        className="section bg-eco-50"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -183,19 +183,19 @@ export function Home({ onAddToCart, onQuickView }) {
         <div className="container-max">
           <div className="max-w-3xl mx-auto">
             <motion.div
-              className="mb-16 text-center"
+              className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-[FjallaOne] mb-6 text-6xl font-bold text-black md:text-5xl">Our Mission</h2>
-              <p className="mb-8 text-lg leading-relaxed text-neutral-50">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-warm-900">Our Mission</h2>
+              <p className="text-lg text-warm-600 leading-relaxed mb-8">
                 We bridge the gap between waste and artisanal creation, empowering marginalized communities through a circular economy model.
               </p>
             </motion.div>
 
             {/* Three-Step Process */}
-            <div className="grid gap-8 md:grid-cols-3 md:gap-4">
+            <div className="grid md:grid-cols-3 gap-8 md:gap-4">
               {['Waste Collection', 'AI Sorting', 'Artisan Production'].map((step, idx) => (
                 <motion.div
                   key={idx}
@@ -204,14 +204,14 @@ export function Home({ onAddToCart, onQuickView }) {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.2, duration: 0.8 }}
                 >
-                  <div className="p-8 text-center bg-white rounded-lg backdrop-filter:blur-lg">
-                    <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 text-xl font-bold text-white rounded-full bg-eco-600">
+                  <div className="bg-white rounded-lg p-8 text-center">
+                    <div className="w-12 h-12 bg-eco-600 text-white rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">
                       {idx + 1}
                     </div>
-                    <h3 className="text-lg font-semibold text-warm-900">{step}</h3>
+                    <h3 className="font-semibold text-lg text-warm-900">{step}</h3>
                   </div>
                   {idx < 2 && (
-                    <div className="hidden md:block absolute top-1/2 -right-4 w-4 h-0.5 bg-[#39FF14] transform -translate-y-1/2"></div>
+                    <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-eco-600 transform -translate-y-1/2"></div>
                   )}
                 </motion.div>
               ))}
@@ -222,27 +222,29 @@ export function Home({ onAddToCart, onQuickView }) {
 
       {/* Artisan Impact */}
       <motion.section
-        className="bg-gradient-to-b from-black/90 to-black section"
+        className="section bg-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <div className="container-max">
           <motion.div
-            className="mb-16 text-center"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="mb-4 text-4xl font-bold md:text-5xl text-neutral-50">Artisan Impact</h2>
-            <p className="max-w-2xl mx-auto text-lg text-neutral-50">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-warm-900">Artisan Impact</h2>
+            <p className="text-lg text-warm-600 max-w-2xl mx-auto">
               Reclaimed materials transformed into beautiful, sustainable products by skilled Filipino artisans
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid md:grid-cols-3 gap-8">
             {artisanMaterials.map((material, idx) => (
               <motion.div
                 key={idx}
-                className="overflow-hidden card"
+                className="card overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.2, duration: 0.8 }}
@@ -252,13 +254,13 @@ export function Home({ onAddToCart, onQuickView }) {
                   <img
                     src={material.image}
                     alt={material.title}
-                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-6">
                   <div className="flex items-start gap-3 mb-3">
-                    <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-lg bg-eco-100">
-                      <material.icon className="text-eco-700" size={23} />
+                    <div className="w-10 h-10 bg-eco-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <material.icon className="text-eco-600" size={20} />
                     </div>
                     <h3 className="text-xl font-semibold text-warm-900">{material.title}</h3>
                   </div>
@@ -272,33 +274,33 @@ export function Home({ onAddToCart, onQuickView }) {
 
       {/* Contact Form */}
       <motion.section
-        className="bg-gradient-to-br from-black to-emerald-700 section"
+        className="section bg-eco-600"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        
         <div className="container-max">
-          
           <div className="max-w-2xl mx-auto">
             <motion.div
-              className="mb-12 text-center"
+              className="text-center mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">Join the Circular Revolution</h2>
-              <p className="text-lg text-eco-100">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">Join the Circular Revolution</h2>
+              <p className="text-eco-100 text-lg">
                 Partner with us to transform waste into opportunity
               </p>
             </motion.div>
 
             <motion.form
               onSubmit={handleContactSubmit}
-              className="p-8 space-y-4 bg-white rounded-lg"
+              className="bg-white rounded-lg p-8 space-y-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid md:grid-cols-2 gap-4">
                 <input
                   type="text"
                   placeholder="First Name"
@@ -341,7 +343,7 @@ export function Home({ onAddToCart, onQuickView }) {
               ></textarea>
               <motion.button
                 type="submit"
-                className="w-full btn bg-[#39FF14]"
+                className="w-full btn btn-primary"
                 whileTap={{ scale: 0.95 }}
               >
                 Submit
