@@ -20,30 +20,10 @@ export function Blog() {
   const featuredPost = blogPosts.find(p => p.featured);
 
   return (
-    <div className="min-h-screen bg-warm-50 pt-20">
-      {/* Header */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="bg-eco-50 pt-16 pb-12"
-      >
-        <div className="container-max">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl"
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-warm-900">
-              Stories for a Circular Future
-            </h1>
-            <p className="text-lg text-warm-600">
-              Explore insights on sustainability, waste management, and artisan empowerment
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
+    <div className="min-h-screen pt-20 bg-warm-50">
+      
 
-      <div className="container-max py-12">
+      <div className="py-12 container-max">
         {/* Search and Filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,26 +33,26 @@ export function Blog() {
           {/* Search */}
           <div className="mb-8">
             <div className="relative max-w-md">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-warm-400" size={20} />
+              <Search className="absolute transform -translate-y-1/2 left-4 top-1/2 text-warm-400" size={20} />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border border-warm-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-eco-500"
+                className="w-full py-3 pl-12 pr-4 border rounded-lg border-warm-200 focus:outline-none focus:ring-2 focus:ring-eco-500"
               />
             </div>
           </div>
 
           {/* Categories */}
-          <div className="flex gap-2 overflow-x-auto pb-2">
+          <div className="flex gap-2 pb-2 overflow-x-auto">
             {['All', ...blogCategories].map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all ${
                   selectedCategory === cat
-                    ? 'bg-eco-600 text-white'
+                    ? 'bg-gradient-to-t from-emerald-600 to-[#39FF14] text-white'
                     : 'bg-white text-warm-700 hover:bg-warm-100'
                 }`}
               >
@@ -92,37 +72,37 @@ export function Blog() {
           >
             <Link to={`/article/${featuredPost.id}`}>
               <motion.div
-                className="card overflow-hidden grid md:grid-cols-2 gap-6"
+                className="grid gap-6 overflow-hidden card md:grid-cols-2"
                 whileHover={{ boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
               >
                 {/* Image */}
-                <div className="h-64 md:h-full overflow-hidden">
+                <div className="h-64 overflow-hidden md:h-full">
                   <img
                     src={featuredPost.image}
                     alt={featuredPost.title}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                    className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="p-8 flex flex-col justify-between">
+                <div className="bg-gradient-to-t from-emerald-600 to-[#39FF14] flex flex-col justify-between p-8">
                   <div>
                     <div className="flex items-center gap-3 mb-4">
                       <span className="badge">Featured</span>
                       <span className="text-xs text-warm-500">{new Date(featuredPost.date).toLocaleDateString()}</span>
                     </div>
-                    <h2 className="text-3xl font-bold mb-4 text-warm-900 hover:text-eco-600 transition-colors">
+                    <h2 className="mb-4 text-3xl font-bold transition-colors text-neutral-900 hover:text-eco-600">
                       {featuredPost.title}
                     </h2>
-                    <p className="text-warm-600 text-lg leading-relaxed">
+                    <p className="text-lg leading-relaxed text-neutral-50">
                       {featuredPost.excerpt}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between mt-6 pt-6 border-t border-warm-200">
-                    <div className="text-sm text-warm-500">
+                  <div className="flex items-center justify-between pt-6 mt-6 border-t border-warm-200">
+                    <div className="text-sm text-neutral-50">
                       By {featuredPost.author} • {featuredPost.readingTime} min read
                     </div>
-                    <span className="text-eco-600 font-semibold hover:text-eco-700">Read →</span>
+                    <span className="font-semibold text-eco-600 hover:text-eco-700">Read →</span>
                   </div>
                 </div>
               </motion.div>
@@ -134,7 +114,7 @@ export function Blog() {
         {filteredPosts.length > 0 ? (
           <motion.div
             layout
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
           >
             {filteredPosts.map((post, idx) => (
               <motion.div
@@ -146,7 +126,7 @@ export function Blog() {
               >
                 <Link to={`/article/${post.id}`}>
                   <motion.div
-                    className="card overflow-hidden h-full flex flex-col hover:shadow-lg transition-shadow"
+                    className="card  bg-gradient-to-t from-emerald-600 to-[#39FF14] overflow-hidden h-full flex flex-col hover:shadow-lg transition-shadow"
                     whileHover={{ y: -4 }}
                   >
                     {/* Image */}
@@ -154,25 +134,25 @@ export function Blog() {
                       <img
                         src={post.image}
                         alt={post.title}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
                       />
                     </div>
 
                     {/* Content */}
-                    <div className="p-6 flex flex-col flex-1">
+                    <div className="flex flex-col flex-1 p-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="badge text-xs">{post.category}</span>
+                        <span className="text-xs badge">{post.category}</span>
                       </div>
-                      <h3 className="font-bold text-lg mb-3 text-warm-900 line-clamp-2 hover:text-eco-600 transition-colors">
+                      <h3 className="mb-3 text-lg font-bold transition-colors text-warm-900 line-clamp-2 hover:text-eco-600">
                         {post.title}
                       </h3>
-                      <p className="text-warm-600 text-sm mb-4 line-clamp-2 flex-1">
+                      <p className="flex-1 mb-4 text-sm text-neutral-50 line-clamp-2">
                         {post.excerpt}
                       </p>
 
                       {/* Meta */}
-                      <div className="border-t border-warm-200 pt-4">
-                        <div className="flex items-center justify-between text-xs text-warm-500 mb-2">
+                      <div className="pt-4 border-t border-warm-200">
+                        <div className="flex items-center justify-between mb-2 text-xs text-neutral-50">
                           <span>By {post.author}</span>
                           <span>{new Date(post.date).toLocaleDateString()}</span>
                         </div>
@@ -194,7 +174,7 @@ export function Blog() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-16"
+            className="py-16 text-center"
           >
             <p className="text-lg text-warm-600">No articles found</p>
           </motion.div>
