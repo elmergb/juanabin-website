@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, X } from 'lucide-react';
-import { products, categories, filters as filterOptions, sortOptions } from '../data/products';
-import { ProductCard } from '../components/ProductCard';
+import { products, categories, filters as filterOptions, sortOptions } from '../../data/products';
+import { ProductCard } from '../../components/ui/ProductCard';
 
 export function Shop({ onAddToCart, onQuickView }) {
   const [searchQuery, setSearchQuery] = useState('');

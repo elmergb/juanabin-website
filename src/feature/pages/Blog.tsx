@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, Eye } from 'lucide-react';
-import { blogPosts, blogCategories } from '../data/blogPosts';
+import { blogPosts, blogCategories } from '../../data/blogPosts';
 
 export function Blog() {
   const [searchQuery, setSearchQuery] = useState('');

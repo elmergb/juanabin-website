@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Eye } from 'lucide-react';
-import { blogPosts } from '../data/blogPosts';
+import { blogPosts } from '../../data/blogPosts';
 
 export function Article() {
   const { id } = useParams();
