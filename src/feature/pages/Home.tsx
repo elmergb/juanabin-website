@@ -41,23 +41,38 @@ export function Home({ onAddToCart, onQuickView }) {
   const artisanMaterials = [
     {
       title: 'Reclaimed Wood',
-      description: 'Sourced from construction waste and fallen timber',
+      description: '100% recycled timber from local waste streams.',
       image: 'https://images.unsplash.com/photo-1633505066033-338d520e7cb3?w=500&h=500&fit=crop',
       icon: Recycle
     },
     {
       title: 'Plastic Textiles',
-      description: 'Woven from reclaimed plastic fibers and waste materials',
+      description: 'Transforming plastic waste into vibrant, durable fabrics.',
       image: 'https://images.unsplash.com/photo-1595429676514-55ff33e26e9b?w=500&h=500&fit=crop',
       icon: Package
     },
     {
       title: 'Recycled Glass',
-      description: 'Transformed into beautiful art and functional pieces',
+      description: 'Creating unique ceramic pieces from discarded glass',
       image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop',
       icon: Leaf
     }
   ];
+
+  const missions = [
+    {
+      title: 'Waste Collection',
+      description: 'Our smart bins facilitate efficient segregation, ensuring waste is collected and sorted with precision.'
+    },
+    {
+      title: 'AI Sorting',
+      description: 'Advanced AI algorithms identify materials, optimizing the recycling process for maximum efficiency.'
+    },
+    {
+      title: 'Artisan Production',
+      description: 'Transformed materials are crafted into high-quality products by marginalized artisans, creating a sustainable future.'
+    }
+  ]
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
@@ -195,20 +210,21 @@ export function Home({ onAddToCart, onQuickView }) {
             </motion.div>
 
             {/* Three-Step Process */}
-            <div className="grid gap-8 md:grid-cols-3 md:gap-4">
-              {['Waste Collection', 'AI Sorting', 'Artisan Production'].map((step, idx) => (
+            <div className="grid items-stretch gap-8 md:grid-cols-3 md:gap-4">
+              {missions.map((step, idx) => (
                 <motion.div
                   key={idx}
-                  className="relative"
+                  className="relative h-full"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.2, duration: 0.8 }}
                 >
-                  <div className="p-8 text-center bg-white rounded-lg backdrop-filter:blur-lg">
+                  <div className="h-full p-8 text-center bg-white rounded-lg">
                     <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 text-xl font-bold text-white rounded-full bg-eco-600">
                       {idx + 1}
                     </div>
-                    <h3 className="text-lg font-semibold text-warm-900">{step}</h3>
+                    <h3 className="text-lg font-semibold text-warm-900">{step.title}</h3>
+                    <p className="mt-2 text-sm text-warm-700">{step.description}</p>
                   </div>
                   {idx < 2 && (
                     <div className="hidden md:block absolute top-1/2 -right-4 w-4 h-0.5 bg-[#39FF14] transform -translate-y-1/2"></div>
@@ -232,7 +248,7 @@ export function Home({ onAddToCart, onQuickView }) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="mb-4 text-4xl font-bold md:text-5xl text-neutral-50">Artisan Impact</h2>
+            <h2 className="font-[FjallaOne] mb-4 text-4xl font-bold md:text-5xl text-neutral-50">Artisan Impact</h2>
             <p className="max-w-2xl mx-auto text-lg text-neutral-50">
               Reclaimed materials transformed into beautiful, sustainable products by skilled Filipino artisans
             </p>
@@ -278,75 +294,170 @@ export function Home({ onAddToCart, onQuickView }) {
         
         <div className="container-max">
           
-          <div className="max-w-2xl mx-auto">
-            <motion.div
-              className="mb-12 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">Join the Circular Revolution</h2>
-              <p className="text-lg text-eco-100">
-                Partner with us to transform waste into opportunity
-              </p>
-            </motion.div>
+          <div className="mx-auto max-w-7xl">
+            <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
-            <motion.form
-              onSubmit={handleContactSubmit}
-              className="p-8 space-y-4 bg-white rounded-lg"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-            >
-              <div className="grid gap-4 md:grid-cols-2">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="input"
-                  value={contactForm.firstName}
-                  onChange={(e) => setContactForm({ ...contactForm, firstName: e.target.value })}
-                  required
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="input"
-                  value={contactForm.lastName}
-                  onChange={(e) => setContactForm({ ...contactForm, lastName: e.target.value })}
-                  required
-                />
-              </div>
-              <input
-                type="email"
-                placeholder="Email"
-                className="input"
-                value={contactForm.email}
-                onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                required
-              />
-              <input
-                type="text"
-                placeholder="Company/Organization"
-                className="input"
-                value={contactForm.company}
-                onChange={(e) => setContactForm({ ...contactForm, company: e.target.value })}
-              />
-              <textarea
-                placeholder="Message"
-                rows={4}
-                className="input"
-                value={contactForm.message}
-                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                required
-              ></textarea>
-              <motion.button
-                type="submit"
-                className="w-full btn bg-[#39FF14]"
-                whileTap={{ scale: 0.95 }}
+              {/* LEFT SIDE - CONTACT INFORMATION */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="lg:pr-8"
               >
-                Submit
-              </motion.button>
-            </motion.form>
+                <span className="inline-block mb-4 text-sm font-semibold tracking-widest uppercase text-[#39FF14]">
+                  Get Involved
+                </span>
+
+                <h2 className="mb-6 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+                  Join the Circular
+                  <br />
+                  <span className="text-[#39FF14]">Revolution.</span>
+                </h2>
+
+                <p className="max-w-xl text-base leading-relaxed text-eco-100 md:text-lg">
+                  We invite you to partner with JuanaBin PH. Whether you are an artisan,
+                  a business, or a community leader, your involvement is vital to our
+                  mission of transforming waste into value and empowering marginalized
+                  communities through technology.
+                </p>
+
+                {/* Optional additional info */}
+                <div className="mt-10 space-y-5">
+
+                  <div className="border-l-2 border-[#39FF14] pl-5">
+                    <h3 className="mb-1 font-semibold text-white">
+                      Partner With Us
+                    </h3>
+                    <p className="text-sm text-gray-400">
+                      Collaborate with us to create sustainable solutions for communities.
+                    </p>
+                  </div>
+
+                  <div className="border-l-2 border-[#39FF14] pl-5">
+                    <h3 className="mb-1 font-semibold text-white">
+                      Build a Better Future
+                    </h3>
+                    <p className="text-sm text-gray-400">
+                      Your ideas, resources, and involvement can help transform waste
+                      into opportunities.
+                    </p>
+                  </div>
+
+                </div>
+              </motion.div>
+
+
+              {/* RIGHT SIDE - CONTACT FORM */}
+              <motion.form
+                onSubmit={handleContactSubmit}
+                className="p-6 space-y-5 bg-white rounded-lg md:p-8"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+              >
+
+                {/* Name */}
+                <div className="grid gap-4 md:grid-cols-2">
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    className="input"
+                    value={contactForm.firstName}
+                    onChange={(e) =>
+                      setContactForm({
+                        ...contactForm,
+                        firstName: e.target.value
+                      })
+                    }
+                    required
+                  />
+
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    className="input"
+                    value={contactForm.lastName}
+                    onChange={(e) =>
+                      setContactForm({
+                        ...contactForm,
+                        lastName: e.target.value
+                      })
+                    }
+                    required
+                  />
+                </div>
+
+
+                {/* Email */}
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="input"
+                  value={contactForm.email}
+                  onChange={(e) =>
+                    setContactForm({
+                      ...contactForm,
+                      email: e.target.value
+                    })
+                  }
+                  required
+                />
+
+
+                {/* Company */}
+                <input
+                  type="text"
+                  placeholder="Company/Organization"
+                  className="input"
+                  value={contactForm.company}
+                  onChange={(e) =>
+                    setContactForm({
+                      ...contactForm,
+                      company: e.target.value
+                    })
+                  }
+                />
+
+
+                {/* Message */}
+                <textarea
+                  placeholder="Message"
+                  rows={5}
+                  className="resize-none input"
+                  value={contactForm.message}
+                  onChange={(e) =>
+                    setContactForm({
+                      ...contactForm,
+                      message: e.target.value
+                    })
+                  }
+                  required
+                />
+
+
+                {/* Submit */}
+                <motion.button
+                  type="submit"
+                  className="
+                    w-full
+                    py-4
+                    font-semibold
+                    text-black
+                    bg-[#39FF14]
+                    hover:bg-[#32e612]
+                    transition-colors
+                    rounded-md
+                  "
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Submit
+                </motion.button>
+
+              </motion.form>
+
+            </div>
           </div>
         </div>
       </motion.section>
